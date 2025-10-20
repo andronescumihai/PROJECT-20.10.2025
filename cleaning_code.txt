@@ -1,0 +1,7 @@
+# Cleaning snippet to screenshot in Colab
+for c in ['rocket_name','family','launch_site','orbit']:
+    df2[c] = df2[c].astype(str).str.lower().replace('none', pd.NA)
+df2['launch_date'] = pd.to_datetime(df2['launch_date'])
+df2['mission_year'] = df2['launch_date'].dt.year
+df2['payload_class'] = pd.cut(df2['payload_kg'], bins=[0,500,2000,5000,20000], labels=['small','medium','large','heavy'])
+df2['cost_million_usd'] = df2['cost_million_usd'].fillna(df2['cost_million_usd'].median())

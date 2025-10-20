@@ -1,0 +1,4 @@
+SELECT family, COUNT(*) as cnt, ROUND(AVG(payload_kg),1) as avg_payload, ROUND(AVG(cost_million_usd),2) as avg_cost
+FROM missions
+GROUP BY family
+ORDER BY cnt DESC;
